@@ -1,8 +1,8 @@
 clear;
 
-MetaChecker = load('MetaChecker_380-780-5nm.txt');
+MetaChecker = load('MetaChecker_380-780-5nm.txt');   % test
 MetaChecker = MetaChecker(:,2:end);
-ColorChecker = load('ColorChecker_380-780-5nm.txt');
+ColorChecker = load('ColorChecker_380-780-5nm.txt'); % standard
 ColorChecker = ColorChecker(:,2:end);
 
 load cie
@@ -23,9 +23,16 @@ Lab2_illA = XYZ2Lab(XYZ2_illA,XYZn_illA);
 DEab_illD65 = deltaEab(Lab1_illD65, Lab2_illD65);
 DEab_illA   = deltaEab(Lab1_illA, Lab2_illA);
 output1     = [(1:24)', DEab_illD65', DEab_illA'];
+disp('part 1');
+for ii=1:24
+   fprintf('%2d  %7.3e  %7.3f \n',output1(ii,1),output1(ii,2),output1(ii,3));
+end
 
 % part 2
-DE94_illD65 = deltaE94(Lab1_illD65,Lab2_illD65);
-DE94_illA   = deltaE94(Lab1_illA,Lab2_illA);
+DE94_illD65 = deltaE94(Lab2_illD65,Lab1_illD65);
+DE94_illA   = deltaE94(Lab2_illA,Lab1_illA);
 output2     = [(1:24)', DE94_illD65', DE94_illA'];
-
+disp('part 2');
+for ii=1:24
+   fprintf('%2d  %7.3e  %7.3f \n',output2(ii,1),output2(ii,2),output2(ii,3));
+end

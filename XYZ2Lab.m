@@ -20,10 +20,10 @@ function Lab = XYZ2Lab(XYZ, XYZn)
     
     
     function f = f(x)
-        if x>0.008856
+        if x>(6/29)^3
             f = x.^(1/3);
         else
-            f = 7.787.*x + 16/116;
+            f = x./(3.*(6/29).^2) + 16/116;
         end
         
     end
