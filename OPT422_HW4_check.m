@@ -19,20 +19,19 @@ XYZ2_illA = ref2XYZ(ColorChecker, cie.cmf2deg,cie.illA);
 Lab1_illA = XYZ2Lab(XYZ1_illA,XYZn_illA);
 Lab2_illA = XYZ2Lab(XYZ2_illA,XYZn_illA);
 
+format shortG
+
 % part 1
 DEab_illD65 = deltaEab(Lab1_illD65, Lab2_illD65);
 DEab_illA   = deltaEab(Lab1_illA, Lab2_illA);
 output1     = [(1:24)', DEab_illD65', DEab_illA'];
-disp('part 1');
-for ii=1:24
-   fprintf('%2d  %7.3e  %7.3f \n',output1(ii,1),output1(ii,2),output1(ii,3));
-end
+disp('[part 1: DEab]');
+disp(output1);
 
 % part 2
+% the MetaChecker is the Standard and the ColorChecker is the Test in order for the DE94 numbers to come out correctly
 DE94_illD65 = deltaE94(Lab2_illD65,Lab1_illD65);
 DE94_illA   = deltaE94(Lab2_illA,Lab1_illA);
 output2     = [(1:24)', DE94_illD65', DE94_illA'];
-disp('part 2');
-for ii=1:24
-   fprintf('%2d  %7.3e  %7.3f \n',output2(ii,1),output2(ii,2),output2(ii,3));
-end
+disp('[part 2: DE94]');
+disp(output2);

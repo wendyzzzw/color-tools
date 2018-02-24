@@ -5,8 +5,6 @@ function DE94 = deltaE94(Lab1, Lab2)
 % This function takes in two 3-by-n matrices of CIELab values (test and reference)
 % and returns a 1-by-n matrix of DE*94 color differences
 
-% https://en.wikipedia.org/wiki/Color_difference#CIE94
-
 kL = 1; kC = 1; kH = 1;
 
 a_test = Lab1(2,:);
@@ -21,12 +19,10 @@ C_ref  = (a_ref.^2 + b_ref.^2).^0.5;
 
 Delta_L = Lab1(1,:) - Lab2(1,:);
 Delta_C = C_test - C_ref;
-% Delta_H = (a_test.*b_ref - a_ref.*b_test)./(0.5.*(C_test.*C_ref + a_test.*a_ref + b_test.*b_ref)).^0.5;
-Delta_H = sqrt((a_ref-a_test).^2 + (b_ref-b_test).^2 - Delta_C.^2);
+Delta_H = (a_test.*b_ref - a_ref.*b_test)./(0.5.*(C_test.*C_ref + a_test.*a_ref + b_test.*b_ref)).^0.5;
+% Delta_H = sqrt((a_ref-a_test).^2 + (b_ref-b_test).^2 - Delta_C.^2);
 
 SL = 1;
-% SC = 1 + 0.045.*C_test;
-% SH = 1 + 0.015.*C_test;
 SC = 1 + 0.045.*C_ref;
 SH = 1 + 0.015.*C_ref;
 
