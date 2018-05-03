@@ -1,8 +1,8 @@
 function Lab = XYZ2Lab(XYZ, XYZn)
 
-    % this function takes a 3-by-n array of tristimulus values [X;Y;Z] (or XYZ) 
-    % and a 3-by-1 vector representing the illuminant whitepoint [Xn;Yn;Zn] or (XYZn),
-    % and returns a 3-by-n array of CIELab values.
+    % inputs: a 3-by-n array of tristimulus values [X;Y;Z] (or XYZ) 
+    %         a 3-by-1 vector representing the illuminant whitepoint [Xn;Yn;Zn] or (XYZn),
+    % return: a 3-by-n array of CIELab values.
     
     X = XYZ(1,:);
     Y = XYZ(2,:);
@@ -25,7 +25,6 @@ function Lab = XYZ2Lab(XYZ, XYZn)
         else
             f = 7.787.*x + 16/116;
         end
-        
     end
     
 end

@@ -2,8 +2,8 @@ function DE94 = deltaE94(Lab1, Lab2)
 
 % Lab1 is the test color and Lab2 is the reference.
 
-% This function takes in two 3-by-n matrices of CIELab values (test and reference)
-% and returns a 1-by-n matrix of DE*94 color differences
+% Inputs: two 3-by-n matrices of CIELab values (test and reference)
+% Return: a 1-by-n matrix of DE*94 color differences
 
 kL = 1; kC = 1; kH = 1;
 
